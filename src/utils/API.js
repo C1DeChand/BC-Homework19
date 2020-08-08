@@ -10,4 +10,4 @@ async function getUser() {
     }
   }
 
-  export default response
+  export default getUser;

@@ -23,8 +23,8 @@ export default function EmpDir() {
       fetch(apiUrl)
         .then((res) => res.json())
         .then((cards) => {
-          setAppState({ loading: false, cards: cards });
-          console.log(cards)
+          setAppState({ loading: false, cards: cards.results });
+          console.log("cards", cards)
         });
       }, [])
   return (
@@ -42,8 +42,8 @@ export default function EmpDir() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
+                  <Button variant="contained" color="primary" onClick={appState.cards.sort()}>
+                    Sort by first name.
                   </Button>
                 </Grid>
                 <Grid item>
@@ -57,20 +57,23 @@ export default function EmpDir() {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
-            {appState && appState.cards && appState.cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {appState && appState.cards && appState.cards.map((card, i) => (
+              <Grid item key={i} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={card.image}
+                    image={card.picture.large}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.name.first} {card.name.last}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      Email: {card.email}
+                    </Typography>
+                    <Typography>
+                      Phone: {card.phone}
                     </Typography>
                   </CardContent>
                   <CardActions>
