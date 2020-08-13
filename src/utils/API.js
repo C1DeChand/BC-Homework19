@@ -1,13 +1,8 @@
 import axios from "axios";
+const URL = "https://randomuser.me/api/?results=200&nat=us";
 
-async function getUser() {
-    try {
-      const response = await axios.get('https://randomuser.me/api/?results=200&nat=u');
-      console.log(response);
-      return response
-    } catch (error) {
-      console.error(error);
+export default {
+    getUsers: function () {
+        return axios.get(URL);
     }
-  }
-
-  export default getUser;
+}

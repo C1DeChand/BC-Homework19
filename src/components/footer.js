@@ -1,8 +1,9 @@
 import React from "react";
-import useStyles from '../useStyles'
+import useStyles from './useStyles'
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+const classes = useStyles;
 
 function Copyright() {
     return (
@@ -18,7 +19,7 @@ function Copyright() {
   }
 
 function Footer() {
-    const classes = useStyles();
+
     return (
 
     <footer className={classes.footer}>
